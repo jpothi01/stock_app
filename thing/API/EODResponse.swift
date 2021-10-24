@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct SymbolPrice : Decodable {
-    let date: Date
-    let close: Decimal
-    let symbol: String
-}
-
 struct EODResponse : Decodable {
     let data: [SymbolPrice]
 }

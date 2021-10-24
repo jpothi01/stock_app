@@ -22,7 +22,7 @@ private func jsonDecoder() -> JSONDecoder {
 
 class StockPriceProvider : StockPriceProviding {
     struct Constants {
-        static let accessKey = "REDACTED"
+        static let accessKey = "5fa0e052d1497ef7d8ddc4b044aa69d4"
         static let baseURL = "http://api.marketstack.com/v1/"
     }
     

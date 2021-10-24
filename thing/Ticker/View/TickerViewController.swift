@@ -8,9 +8,22 @@
 import Foundation
 import UIKit
 
-class AppViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, TickerUpdateDelegate {
-    private let viewModel = TickerViewModel(stockPriceProvider: StockPriceProvider())
+class TickerViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, TickerPresenterToView {
+    private let presenter: TickerViewToPresenter
+    private var isLoading = false
+    private var progressView: UIView?
     private let tableView = UITableView()
+    
+    private var tickerItems: [TickerItem] = []
+    
+    init(presenter: TickerViewToPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         self.view.backgroundColor = Colors.backgroundColor
@@ -21,14 +34,19 @@ class AppViewController : UIViewController, UITableViewDelegate, UITableViewData
             )
         
         self.configureTableView()
-        
-        viewModel.delegate = self
-        viewModel.refreshTicker()
+        self.presenter.viewDidLoad()
     }
     
-    // MARK: TickerUpdateDelegate
-    func tickerDataWasUpdated() {
-        tableView.reloadData()
+    // MARK: TickerPresenterToView
+    func showLoading() {
+        self.isLoading = true
+        self.updateTableView()
+    }
+    
+    func showTickerItems(items: [TickerItem]) {
+        self.tickerItems = items
+        self.isLoading = false
+        self.updateTableView()
     }
     
     // MARK: UITableViewDataSource
@@ -41,20 +59,20 @@ class AppViewController : UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section != 0 {
+        if section != 0 || self.isLoading {
             return 0
         }
         
-        return viewModel.tickerItems.count
+        return self.tickerItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tickerItemIndex = indexPath.row
-        guard tickerItemIndex < self.viewModel.tickerItems.count else {
+        guard tickerItemIndex < self.tickerItems.count else {
             return TickerTableViewCell(name: "", symbol: "")
         }
         
-        let tickerItem = self.viewModel.tickerItems[tickerItemIndex]
+        let tickerItem = self.tickerItems[tickerItemIndex]
         return TickerTableViewCell(name: tickerItem.name, symbol: tickerItem.symbol)
     }
     
@@ -64,15 +82,21 @@ class AppViewController : UIViewController, UITableViewDelegate, UITableViewData
         }
         
         let tickerItemIndex = indexPath.row
-        guard tickerItemIndex < self.viewModel.tickerItems.count else {
+        guard tickerItemIndex < self.tickerItems.count else {
             return
         }
         
-        let tickerItem = self.viewModel.tickerItems[tickerItemIndex]
+        let tickerItem = self.tickerItems[tickerItemIndex]
         self.openDetailView(tickerItem: tickerItem)
     }
     
     // MARK: Private
+    private static func createProgressView() -> UIView {
+        let view = UIActivityIndicatorView()
+        view.startAnimating()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
     
     private func configureTableView() {
         self.view.addSubview(tableView)
@@ -80,6 +104,7 @@ class AppViewController : UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableFooterView = UIView()
         
         self.view.addConstraint(
             NSLayoutConstraint(
@@ -130,12 +155,34 @@ class AppViewController : UIViewController, UITableViewDelegate, UITableViewData
         )
     }
     
-    private func openDetailView(tickerItem: TickerItem) {
-        self.viewModel.fetchSymbolPrices(forSymbol: tickerItem.symbol) { symbolPrices in
-            let viewModel =
-                SymbolDetailViewModel(tickerItem: tickerItem, symbolPrices: symbolPrices)
-            let viewController = SymbolDetailViewController(viewModel: viewModel)
-            self.navigationController!.pushViewController(viewController, animated: true)
+    private func showProgressView() {
+        let view = Self.createProgressView()
+        self.view.addSubview(view)
+        
+        NSLayoutConstraint.activate([
+            view.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+        ])
+        
+        self.progressView = view
+    }
+    
+    private func hideProgressView() {
+        progressView?.removeFromSuperview()
+        progressView = nil
+    }
+    
+    private func updateTableView() {
+        if (self.isLoading) {
+            showProgressView()
+        } else {
+            hideProgressView()
         }
+        
+        self.tableView.reloadData()
+    }
+    
+    private func openDetailView(tickerItem: TickerItem) {
+        self.presenter.showTickerItemDetail(item: tickerItem)
     }
 }

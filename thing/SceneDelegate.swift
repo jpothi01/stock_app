@@ -21,8 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
+            let interactor = TickerInteractor(stockPriceProvider: StockPriceProvider())
+            let router = TickerRouter()
+            let presenter = TickerPresenter(interactor: interactor, router: router)
+            let view = TickerViewController(presenter: presenter)
+            presenter.view = view
+            interactor.presenter = presenter
+            
             let navigationController =
-                UINavigationController(rootViewController: AppViewController())
+                UINavigationController(rootViewController: view)
             window.rootViewController = navigationController
             self.window = window
             window.makeKeyAndVisible()

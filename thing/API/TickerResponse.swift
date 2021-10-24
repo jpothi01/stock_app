@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct TickerItem : Decodable {
-    let name: String
-    let symbol: String
-}
-
 struct TickerResponse : Decodable {
     let data: [TickerItem]
 }

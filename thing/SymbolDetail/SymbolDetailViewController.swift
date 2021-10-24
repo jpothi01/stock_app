@@ -85,49 +85,20 @@ class SymbolDetailViewController : UIViewController {
         
         self.view.addSubview(priceGraph)
         
-        self.view.addConstraint(
-            NSLayoutConstraint(
-                item: priceGraph,
-                attribute: .left,
-                relatedBy: .equal,
-                toItem: self.view,
-                attribute: .left,
-                multiplier: 1,
+        NSLayoutConstraint.activate([
+            priceGraph.leftAnchor.constraint(
+                equalTo: self.view.leftAnchor,
                 constant: Constants.margin
-            )
-        )
-        self.view.addConstraint(
-            NSLayoutConstraint(
-                item: priceGraph,
-                attribute: .right,
-                relatedBy: .equal,
-                toItem: self.view,
-                attribute: .right,
-                multiplier: 1,
+            ),
+            priceGraph.rightAnchor.constraint(
+                equalTo: self.view.rightAnchor,
                 constant: -Constants.margin
-            )
-        )
-        self.view.addConstraint(
-            NSLayoutConstraint(
-                item: priceGraph,
-                attribute: .top,
-                relatedBy: .equal,
-                toItem: nameLabel,
-                attribute: .bottom,
-                multiplier: 1,
+            ),
+            priceGraph.topAnchor.constraint(
+                equalTo: nameLabel.bottomAnchor,
                 constant: Constants.margin
-            )
-        )
-        self.view.addConstraint(
-            NSLayoutConstraint(
-                item: priceGraph,
-                attribute: .height,
-                relatedBy: .equal,
-                toItem: nil,
-                attribute: .notAnAttribute,
-                multiplier: 1,
-                constant: Constants.graphHeight
-            )
-        )
+            ),
+            priceGraph.heightAnchor.constraint(equalToConstant: Constants.graphHeight)
+        ])
     }
 }

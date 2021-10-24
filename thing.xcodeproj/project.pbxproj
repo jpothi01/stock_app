@@ -13,7 +13,7 @@
 		52FE2B712721D6530041C5CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FE2B702721D6530041C5CA /* Assets.xcassets */; };
 		52FE2B822721D6530041C5CA /* thingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2B812721D6530041C5CA /* thingTests.swift */; };
 		52FE2B8D2721D6530041C5CA /* thingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2B8C2721D6530041C5CA /* thingUITests.swift */; };
-		52FE2B9B2721DE4C0041C5CA /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2B9A2721DE4C0041C5CA /* AppViewController.swift */; };
+		52FE2B9B2721DE4C0041C5CA /* TickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2B9A2721DE4C0041C5CA /* TickerViewController.swift */; };
 		52FE2B9D2721E5F10041C5CA /* TickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2B9C2721E5F10041C5CA /* TickerTableViewCell.swift */; };
 		52FE2B9F2721EFF10041C5CA /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2B9E2721EFF10041C5CA /* TickerResponse.swift */; };
 		52FE2BA12721F0960041C5CA /* EODResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BA02721F0960041C5CA /* EODResponse.swift */; };
@@ -24,6 +24,12 @@
 		52FE2BAD272215790041C5CA /* SymbolDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BAC272215790041C5CA /* SymbolDetailViewModel.swift */; };
 		52FE2BAF272216CF0041C5CA /* SymbolPriceGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BAE272216CF0041C5CA /* SymbolPriceGraph.swift */; };
 		52FE2BB127221B880041C5CA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BB027221B880041C5CA /* Colors.swift */; };
+		52FE2BC32725983B0041C5CA /* TickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BC22725983B0041C5CA /* TickerItem.swift */; };
+		52FE2BC5272598550041C5CA /* SymbolPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BC4272598550041C5CA /* SymbolPrice.swift */; };
+		52FE2BC7272598CB0041C5CA /* TickerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BC6272598CB0041C5CA /* TickerPresenter.swift */; };
+		52FE2BCA272598F40041C5CA /* TickerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BC9272598F40041C5CA /* TickerProtocols.swift */; };
+		52FE2BCC2725999F0041C5CA /* TickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BCB2725999F0041C5CA /* TickerRouter.swift */; };
+		52FE2BCE272599B10041C5CA /* TickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FE2BCD272599B10041C5CA /* TickerInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +62,7 @@
 		52FE2B882721D6530041C5CA /* thingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FE2B8C2721D6530041C5CA /* thingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thingUITests.swift; sourceTree = "<group>"; };
 		52FE2B8E2721D6530041C5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52FE2B9A2721DE4C0041C5CA /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		52FE2B9A2721DE4C0041C5CA /* TickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerViewController.swift; sourceTree = "<group>"; };
 		52FE2B9C2721E5F10041C5CA /* TickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerTableViewCell.swift; sourceTree = "<group>"; };
 		52FE2B9E2721EFF10041C5CA /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
 		52FE2BA02721F0960041C5CA /* EODResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EODResponse.swift; sourceTree = "<group>"; };
@@ -67,6 +73,12 @@
 		52FE2BAC272215790041C5CA /* SymbolDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolDetailViewModel.swift; sourceTree = "<group>"; };
 		52FE2BAE272216CF0041C5CA /* SymbolPriceGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPriceGraph.swift; sourceTree = "<group>"; };
 		52FE2BB027221B880041C5CA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		52FE2BC22725983B0041C5CA /* TickerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerItem.swift; sourceTree = "<group>"; };
+		52FE2BC4272598550041C5CA /* SymbolPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPrice.swift; sourceTree = "<group>"; };
+		52FE2BC6272598CB0041C5CA /* TickerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerPresenter.swift; sourceTree = "<group>"; };
+		52FE2BC9272598F40041C5CA /* TickerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerProtocols.swift; sourceTree = "<group>"; };
+		52FE2BCB2725999F0041C5CA /* TickerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerRouter.swift; sourceTree = "<group>"; };
+		52FE2BCD272599B10041C5CA /* TickerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +137,6 @@
 				52FE2B6E2721D6510041C5CA /* ContentView.swift */,
 				52FE2B702721D6530041C5CA /* Assets.xcassets */,
 				52FE2B782721D6530041C5CA /* Info.plist */,
-				52FE2B9A2721DE4C0041C5CA /* AppViewController.swift */,
 				52FE2BB027221B880041C5CA /* Colors.swift */,
 			);
 			path = thing;
@@ -152,7 +163,12 @@
 		52FE2BB42723313E0041C5CA /* Ticker */ = {
 			isa = PBXGroup;
 			children = (
-				52FE2B9C2721E5F10041C5CA /* TickerTableViewCell.swift */,
+				52FE2BC8272598EC0041C5CA /* Protocols */,
+				52FE2BBC272597E20041C5CA /* Router */,
+				52FE2BC0272597FE0041C5CA /* Presenter */,
+				52FE2BBF272597F80041C5CA /* Interactor */,
+				52FE2BBE272597F40041C5CA /* View */,
+				52FE2BBD272597E80041C5CA /* Entity */,
 				52FE2BA82721F5DA0041C5CA /* TickerViewModel.swift */,
 			);
 			path = Ticker;
@@ -161,6 +177,11 @@
 		52FE2BB5272331490041C5CA /* SymbolDetail */ = {
 			isa = PBXGroup;
 			children = (
+				52FE2BBB272597D80041C5CA /* Router */,
+				52FE2BBA272597C20041C5CA /* Presenter */,
+				52FE2BB9272597B60041C5CA /* Interactor */,
+				52FE2BB8272597B00041C5CA /* View */,
+				52FE2BB7272597AB0041C5CA /* Entity */,
 				52FE2BAA272215650041C5CA /* SymbolDetailViewController.swift */,
 				52FE2BAC272215790041C5CA /* SymbolDetailViewModel.swift */,
 				52FE2BAE272216CF0041C5CA /* SymbolPriceGraph.swift */,
@@ -177,6 +198,91 @@
 				52FE2BA42721F21D0041C5CA /* StockPriceProvider.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		52FE2BB7272597AB0041C5CA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				52FE2BC4272598550041C5CA /* SymbolPrice.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		52FE2BB8272597B00041C5CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52FE2BB9272597B60041C5CA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		52FE2BBA272597C20041C5CA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		52FE2BBB272597D80041C5CA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		52FE2BBC272597E20041C5CA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				52FE2BCB2725999F0041C5CA /* TickerRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		52FE2BBD272597E80041C5CA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				52FE2BC22725983B0041C5CA /* TickerItem.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		52FE2BBE272597F40041C5CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52FE2B9A2721DE4C0041C5CA /* TickerViewController.swift */,
+				52FE2B9C2721E5F10041C5CA /* TickerTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52FE2BBF272597F80041C5CA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				52FE2BCD272599B10041C5CA /* TickerInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		52FE2BC0272597FE0041C5CA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				52FE2BC6272598CB0041C5CA /* TickerPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		52FE2BC8272598EC0041C5CA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				52FE2BC9272598F40041C5CA /* TickerProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,15 +415,21 @@
 			files = (
 				52FE2B9D2721E5F10041C5CA /* TickerTableViewCell.swift in Sources */,
 				52FE2BA12721F0960041C5CA /* EODResponse.swift in Sources */,
+				52FE2BCE272599B10041C5CA /* TickerInteractor.swift in Sources */,
 				52FE2B6B2721D6510041C5CA /* AppDelegate.swift in Sources */,
+				52FE2BCA272598F40041C5CA /* TickerProtocols.swift in Sources */,
 				52FE2BB127221B880041C5CA /* Colors.swift in Sources */,
 				52FE2B9F2721EFF10041C5CA /* TickerResponse.swift in Sources */,
+				52FE2BC5272598550041C5CA /* SymbolPrice.swift in Sources */,
 				52FE2BA52721F21D0041C5CA /* StockPriceProvider.swift in Sources */,
+				52FE2BC32725983B0041C5CA /* TickerItem.swift in Sources */,
 				52FE2B6D2721D6510041C5CA /* SceneDelegate.swift in Sources */,
 				52FE2BA32721F1D00041C5CA /* StockPriceProviding.swift in Sources */,
+				52FE2BC7272598CB0041C5CA /* TickerPresenter.swift in Sources */,
+				52FE2BCC2725999F0041C5CA /* TickerRouter.swift in Sources */,
 				52FE2BAF272216CF0041C5CA /* SymbolPriceGraph.swift in Sources */,
 				52FE2BAB272215650041C5CA /* SymbolDetailViewController.swift in Sources */,
-				52FE2B9B2721DE4C0041C5CA /* AppViewController.swift in Sources */,
+				52FE2B9B2721DE4C0041C5CA /* TickerViewController.swift in Sources */,
 				52FE2BA92721F5DA0041C5CA /* TickerViewModel.swift in Sources */,
 				52FE2B6F2721D6510041C5CA /* ContentView.swift in Sources */,
 				52FE2BAD272215790041C5CA /* SymbolDetailViewModel.swift in Sources */,
