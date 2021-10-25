@@ -24,11 +24,16 @@ class SymbolPriceGraph : UIView {
     
     private let axisLayer = CAShapeLayer()
     private let lineLayer = CAShapeLayer()
-    private let prices: [Decimal]
     
-    init(viewModel: SymbolDetailViewModel) {
-        self.prices = Self.calculateMostRecentPrices(viewModel: viewModel)
-        
+    private var pricesToDisplay: [Decimal] = []
+    var prices: [Decimal] = [] {
+        didSet {
+            self.pricesToDisplay = Self.calculateMostRecentPrices(prices: prices)
+            self.setNeedsDisplay()
+        }
+    }
+    
+    init() {
         super.init(frame: CGRect.zero)
         self.layer.addSublayer(axisLayer)
         self.layer.addSublayer(lineLayer)
@@ -46,9 +51,8 @@ class SymbolPriceGraph : UIView {
     }
     
     // MARK: Private
-    private static func calculateMostRecentPrices(viewModel: SymbolDetailViewModel) -> [Decimal] {
-        let numDaysOfPrices = min(viewModel.priceByDay.count, Constants.maxDaysOfPrices)
-        let prices = viewModel.priceByDay
+    private static func calculateMostRecentPrices(prices: [Decimal]) -> [Decimal] {
+        let numDaysOfPrices = min(prices.count, Constants.maxDaysOfPrices)
         return Array(prices[(prices.count - numDaysOfPrices)..<prices.count])
     }
     private func drawAxes() {

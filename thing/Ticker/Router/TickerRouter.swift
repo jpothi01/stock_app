@@ -10,11 +10,16 @@ import UIKit
 
 class TickerRouter : TickerPresenterToRouter {
     func showTickerItemDetail(from view: UIViewController, tickerItem: TickerItem, symbolPrices: [SymbolPrice]) {
-        let viewModel =
+        let prices =
             SymbolDetailViewModel(tickerItem: tickerItem, symbolPrices: symbolPrices)
-        let viewController = SymbolDetailViewController(viewModel: viewModel)
+        let interactor = SymbolDetailInteractor(prices: prices)
+        let router = SymbolDetailRouter()
+        let presenter = SymbolDetailPresenter(interactor: interactor, router: router)
+        
+        let viewController = SymbolDetailViewController(presenter: presenter)
+        
+        presenter.view = viewController
+        
         view.navigationController!.pushViewController(viewController, animated: true)
     }
-    
-    
 }
